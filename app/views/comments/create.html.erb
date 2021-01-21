@@ -1,0 +1,3 @@
+$("#sekai_<%= @sekai.id %> .comments-count").html("コメント数: <%= @sekai.sekai_comments.count %>");
+$(".sekai_comments").html("<%= j(render 'sekai_comments/index', sekai: @sekai) %>");
+$("#sekai_comment_comment").val("");

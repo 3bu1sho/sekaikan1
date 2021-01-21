@@ -1,0 +1,10 @@
+<h1>編集画面</h1>
+<%= form_with model: @sekai, url: update_sekai_path, local:true do |f| %>
+  <h4>世界の名</h4>
+  <%= f.text_field :name %>
+  <h4>概要</h4>
+  <%= f.text_area :introduction %>
+  <%= f.submit '編纂' %>
+  
+  <%= link_to "終末", sekai_path(@sekai.id), method: :delete, "data-confirm" => "世界を崩落させます。よろしいですか？" %>
+<% end %>

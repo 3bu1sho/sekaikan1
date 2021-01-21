@@ -1,24 +1,29 @@
-# README
+# 世界館
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+世界設定を投稿、共有、保存出来るSNS
 
-Things you may want to cover:
+### サイトテーマ
+あらゆる作品の独創的、もしくはテンプレート的な世界観の観察。ユーザーの知りうる、考えうる世界観を評価、考証して盛り上がるSNS。SF、ナーロッパ、スチームパンク、タイムトラベル、タイムリープのような知っているようで知らない世界設定にフォーカスを絞ったウィキペディアのようなサイトであり、また産業時代のシルクロードをロバで移動したときの日ごとの移動距離のような現実世界の考証も比較参照などの用途で共有される
 
-* Ruby version
+### テーマを選んだ理由
+空想科学に対して関心があるのと、世界設定についてユーザー投稿を行っているサイトがないから
 
-* System dependencies
+### ターゲットユーザ
+物語を愛するすべての人。ここでいう物語を愛する人とは、ドラマや小説、音楽にとどまらず、日常の中に偏在する異世界に触れて感銘を受けた者である。つまり生まれて一度でも娯楽を楽しんだことのある者であり、本格的に作家業に打ち込んでいる者のみを対象として捉えた狭義の意味ではない
 
-* Configuration
+### 主な利用シーン
+タイムリープなどの意味、解説。サーフィンして適当に「そういう設定もあるのか」と暇つぶし、勉強に使う。また、作家にもゲーム、小説などの設定ブレを回避したい時に参考にできるデータベースとしての側面も持つ
 
-* Database creation
 
-* Database initialization
+## 設計書
+機能一覧
+<https://docs.google.com/spreadsheets/d/11cqkfpKZn9yDoFekC8Nr7WMZSWz6oEBopzAPOqixbEc/edit?usp=sharing>
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
