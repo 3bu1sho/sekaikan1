@@ -1,4 +1,22 @@
 <h2>名</h2>
 <p><%= @sekai.name %></p>
+<h2>タグ</h2>
+<% @sekai_tags.each do |list| %>
+  <span>
+   <%= link_to list.tag_name, tag_sekais_path(list.id) %>
+    </span>
+  <% end %>
+
+
+<h2>画像</h2>
+<%= attachment_image_tag @sekai, :image, :fill, 300, 300, format: 'jpeg' %>
 <h2>概要</h2>
 <p><%= @sekai.introduction %></p>
+
+<table class="sekai_comments">
+  <%= render 'comments/index', sekai: @sekai %>
+</table>
+<%= form_with(model:[@sekai,@comment], local: true) do |f| %>
+  <%= f.text_area :comment, size:"90x5" %>
+  <%= f.submit '送信'%>
+<% end %>

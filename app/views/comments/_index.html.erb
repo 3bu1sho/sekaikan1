@@ -1,15 +1,16 @@
-<% book.sekai_comments.each do |sekai_comment| %>
-  <% sekai_comment_user = sekai_comment.user %>
+<% sekai.comments.each do |comment| %>
+  <% comment_user = comment.user %>
   <tr>
   	<td>
-  		<%= link_to user_path(sekai_comment_user), class: "user_#{sekai_comment_user.id}" do %>
-    		<%= attachment_image_tag sekai_comment_user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
-    		<%= sekai_comment_user.name %>
-  		<% end %>
+  		<%#= link_to user_path(comment_user), class: "user_#{comment_user.id}" do %>
+    		<%= comment_user.name %>
+  		<%# end %>
   	</td>
-  	<td><%= sekai_comment.comment %></td>
-  	<% if current_user == sekai_comment_user %>
-    	<td><%= link_to 'Destroy', book_sekai_comment_path(sekai_comment.book_id, sekai_comment.id), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
+  	<td><%= comment.comment %></td>
+  	<% if current_user == comment_user %>
+    	<td>
+    	  <%#= link_to 'Destroy', comment_path(comment.sekai_id, comment.id), class: 'btn-sm btn-danger', method: :delete, remote: true %>
+<%= link_to "削除", sekai_comment_path(comment.sekai_id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>    	</td>
   	<% end %>
   </tr>
 <% end %>

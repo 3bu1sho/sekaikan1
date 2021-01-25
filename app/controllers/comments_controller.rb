@@ -3,22 +3,24 @@ class CommentsController < ApplicationController
 
 	def create
 		@sekai = Sekai.find(params[:sekai_id])
-		@sekai_comment = SekaiComment.new(sekai_comment_params)
+		@sekai_comment = Comment.new(sekai_comment_params)
 		@sekai_comment.sekai_id = @sekai.id
 		@sekai_comment.user_id = current_user.id
-        unless @sekai_comment.save
+		if @sekai_comment.save
+           redirect_to sekai_path(@sekai.id)
+        else
         render 'error'
         end
 	end
 
 	def destroy
 		@sekai = Sekai.find(params[:sekai_id])
-  	sekai_comment = @sekai.sekai_comments.find(params[:id])
+  	sekai_comment = @sekai.comments.find(params[:id])
 		sekai_comment.destroy
 	end
 
 	private
 	def sekai_comment_params
-		params.require(:sekai_comment).permit(:comment)
+		params.require(:comment).permit(:comment)
 	end
 end

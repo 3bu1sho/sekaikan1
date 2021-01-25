@@ -1,0 +1,21 @@
+<h2> 投稿一覧 </h2>
+　
+<div id="タグリスト"> </div>
+  <% @tag_list.each do |list| %>
+  <span>
+     <%= (link_to list.tag_name, tag_sekais_path(list.id)) %>
+     <%= ("(#{list.sekais.count})") %>
+  </span>
+  <% end %>
+  <br />
+  <div id="タグによって絞り込んだ投稿一覧">
+  </div>
+<%= "タグが ─ " %>
+<%= "#{@tag.tag_name}" %>
+<%= " ─ の投稿一覧" %>
+    <br /> 
+    <% @sekais.each do |post| %>
+    <%= (link_to post.introduction, post) %>
+    <% end %>
+    <br /> 
+    <%= (link_to '俯瞰する', sekais_path) %>

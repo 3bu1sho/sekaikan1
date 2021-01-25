@@ -24,9 +24,16 @@ devise_for :admins, controllers:
   resources :sekais do
      resource :favorites, only: [:create, :destroy]
      resources :comments, only: [:create, :destroy]
+     resources :tags, only: [:create, :destroy]
+
   end
   
-  resources :posts
+    get 'favorite_rank' => 'sekais#favorite_rank'
+    
+    
+  resources :tags do
+    get 'sekais', to: 'sekais#search'
+  end
   
 #   resources :users do
 #         resources :sekais
