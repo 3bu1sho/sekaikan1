@@ -1,0 +1,18 @@
+<h1>世界一覧</h1>
+<% sekais.each.with_index(1) do |sekai, i| %>
+<div>
+  <p>
+    第
+  <%= i %>
+    位
+    <span>
+    <td class="favorite-btn"><%= render "favorites/favorite-btn", sekai: sekai %></td>
+
+  </span>
+  </p>
+  世界の名:
+  <%= link_to sekai.name, "/sekais/#{sekai.id}" %>
+    <p>画像</p>
+  <%= attachment_image_tag sekai, :image, format: 'jpeg', size: "100x100" %>
+  </div>
+  <% end %>

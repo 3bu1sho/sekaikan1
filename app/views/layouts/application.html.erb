@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sekaikan</title>
+    <title>世界館</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,18 +10,28 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
+    <!--<%# if user_signed_in? %>-->
+    <!--  <li>-->
+    <!--    <%#= link_to "ログアウト", destroy_user_session_path, method: :delete %>-->
+    <!--  </li>-->
+    <!--<%# else %>-->
+    <!--  <li>-->
+    <!--    <%#= link_to "新規登録", new_user_registration_path %>-->
+    <!--  </li>-->
+    <!--  <li>-->
+    <!--    <%#= link_to "ログイン", new_user_session_path %>-->
+    <!--  </li>-->
+    <!--<%# end %>-->
+    
+          <main>
+    <%= render 'layouts/header' %>
+        <% if user_signed_in? %>
+          <%= render 'layouts/search' %>
+        <% end %>
+      </main>
+            <p id="notice"><%= notice %></p>
+
     <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

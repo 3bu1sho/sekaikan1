@@ -1,0 +1,7 @@
+<% if @model == 'user' %>
+	<h3>Users search for "<%= @content %>"</h3>
+  <%= render 'users/index', users: @records %>
+<% elsif @model == 'sekai' %>
+	<h3>Sekai search for "<%= @content %>"</h3>
+  <%= render 'sekais/index', sekais: @records %>
+<% end %>

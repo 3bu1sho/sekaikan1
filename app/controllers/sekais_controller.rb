@@ -28,6 +28,7 @@ class SekaisController < ApplicationController
   end
   
   def index
+      @sekais =  current_user.sekais
       @sekais = Sekai.find(Favorite.group(:sekai_id).order('count(user_id) desc').limit(100).pluck(:sekai_id))
       if @sekais.length < 100
       @sekais_nil = Sekai.includes(:favorites).where( :favorites => { :id => nil } ).limit(100 - @sekais.length)
@@ -41,6 +42,7 @@ class SekaisController < ApplicationController
      # sekais = Sekai.includes(:favorites).references(:favorites).group('sekai_id').order('user_id desc').each {|s| puts s.name}
       @tag_list = Tag.all
       # @sekai = current_user.sekais.new
+      
   end
   
   def show
@@ -52,12 +54,20 @@ class SekaisController < ApplicationController
   
   def edit
     @sekai = Sekai.find(params[:id])
+    @sekai_tags = @sekai.tags  
   end
   
   def update
-    sekai = Sekai.find(params[:id])
-    sekai.update(sekai_params)
-    redirect_to sekai_path(sekai.id)
+    @sekai = Sekai.find(params[:id])
+    tag_list = params[:sekai][:tag_name].split(' ')
+    if @sekai.update(sekai_params)
+      tags = []
+      tag_list.each do |tag_name|
+        tags << Tag.find_or_create_by(tag_name: tag_name)
+      end    
+      @sekai.tags = tags
+    end
+    redirect_to sekais_path(@sekai.id)
   end
   
   def destroy
@@ -82,15 +92,20 @@ class SekaisController < ApplicationController
     @tag = Tag.find(params[:tag_id])  #クリックしたタグを取得
     @sekais = @tag.sekais.all           #クリックしたタグに紐付けられた投稿を全て表示
   end
+  
+  def mysekai
+      @sekais =  current_user.sekais
+      @tag_list = Tag.all
+  end
 
   private
   # ストロングパラメータ
   def sekai_params
-    params.require(:sekai).permit(:name, :introduction)
+    params.require(:sekai).permit(:name, :introduction, :image, :tag_id)
   end
   
   def favorite_params
-    params.require(:sekai).permit(:name, :introduction)
+    params.require(:sekai).permit(:name, :introduction, :image, :tag_id)
   end
     
 end

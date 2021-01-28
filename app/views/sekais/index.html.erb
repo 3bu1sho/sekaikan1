@@ -1,43 +1,57 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class="col-md-3 offset-md-1 px-5 px-sm-0 mx-auto">
+    
     <%= link_to "創造を開始する", "/sekais/new" %>
     
-<div id="タグリスト"> </div>
-  <% @tag_list.each do |list| %>
-  <span>
-     <%= (link_to list.tag_name, tag_sekais_path(list.id)) %>
-     <%= ("(#{list.sekais.count})") %>
-  </span>
-  <% end %>
-
-
-<h1>投稿一覧</h1>
-<% @sekais.each.with_index(1) do |sekai, i| %>
-<div>
-  <p>
+    <div id="タグリスト"> </div>
+    <% @tag_list.each do |list| %>
+    <% if list.sekais.count == 0 %>
+    <% else %>
+  
+    <span>
+       <%= (link_to list.tag_name, tag_sekais_path(list.id)) %>
+       <%= ("(#{list.sekais.count})") %>
+    </span>
+    <% end %>                                          
+    <% end %>                          
+    </div>
+    
+    <div class='col-md-8 offset-md-1'>
+    
+    
+    <h1>世界一覧</h1>
+    <% @sekais.each.with_index(1) do |sekai, i| %>
+    <div>
+    <p>
     第
-  <%= i %>
+    <%= i %>
     位
     <span>
     <td class="favorite-btn"><%= render "favorites/favorite-btn", sekai: sekai %></td>
-
-  </span>
-  </p>
-  タイトル:
-  <%= link_to sekai.name, "/sekais/#{sekai.id}" %>
+    
+    </span>
+    </p>
+    世界の名:
+    <%= link_to sekai.name, "/sekais/#{sekai.id}" %>
     <p>画像</p>
-  <%= attachment_image_tag sekai, :image, :fill, 100, 100, format: 'jpeg' %>
+    <%= attachment_image_tag sekai, :image, format: 'jpeg', size: "100x100" %>
+    </div>
+    <% end %>
+    
+    <%# @sekais_nil.each.with_index(1) do |sekai, i| %>
+    <!--  第-->
+    <!--<%#= i %>-->
+    <!--  位-->
+    <!--<p>タイトル</p>-->
+    <!--  <p>画像</p>-->
+    <!--<%#= attachment_image_tag sekai, :image, :fill, 100, 100, format: 'jpeg' %>-->
+    <!--<span>-->
+    <!--  <%#= link_to sekai.name, "/sekais/#{sekai.id}" %>-->
+    <!--  <td class="favorite-btn"><%#= render "favorites/favorite-btn", sekai: sekai %></td>-->
+    
+    <!--</span>-->
+    <!--<#% end %>-->
+    </div>
+</div>
   </div>
-  <% end %>
-  
-  <%# @sekais_nil.each.with_index(1) do |sekai, i| %>
-  <!--  第-->
-  <!--<%#= i %>-->
-  <!--  位-->
-  <!--<p>タイトル</p>-->
-  <!--  <p>画像</p>-->
-  <!--<%#= attachment_image_tag sekai, :image, :fill, 100, 100, format: 'jpeg' %>-->
-  <!--<span>-->
-  <!--  <%#= link_to sekai.name, "/sekais/#{sekai.id}" %>-->
-  <!--  <td class="favorite-btn"><%#= render "favorites/favorite-btn", sekai: sekai %></td>-->
-
-  <!--</span>-->
-  <!--<#% end %>-->

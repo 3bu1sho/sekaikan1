@@ -1,18 +1,22 @@
 <h2> 投稿一覧 </h2>
 　
-<div id="タグリスト"> </div>
+<div id="要素リスト"> </div>
   <% @tag_list.each do |list| %>
+  <% if list.sekais.count == 0 %>
+  <% else %>
+
   <span>
      <%= (link_to list.tag_name, tag_sekais_path(list.id)) %>
      <%= ("(#{list.sekais.count})") %>
   </span>
   <% end %>
+  <% end %>
   <br />
-  <div id="タグによって絞り込んだ投稿一覧">
+  <div id="要素によって絞り込んだ世界一覧">
   </div>
-<%= "タグが ─ " %>
+<%= "要素が ─ " %>
 <%= "#{@tag.tag_name}" %>
-<%= " ─ の投稿一覧" %>
+<%= " ─ の世界一覧" %>
     <br /> 
     <% @sekais.each do |post| %>
     <%= (link_to post.introduction, post) %>

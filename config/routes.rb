@@ -18,13 +18,14 @@ devise_for :admins, controllers:
       
   root 'homes#top'
     get 'top' => 'homes#top'
+    get 'sekais/mysekai' => 'sekais#mysekai'
     post 'sekais' => 'sekais#create'
-    patch 'sekais/:id' => 'sekais#update', as: 'update_sekai'
+    patch 'sekais/:id' => 'sekais#update'
   
   resources :sekais do
      resource :favorites, only: [:create, :destroy]
      resources :comments, only: [:create, :destroy]
-     resources :tags, only: [:create, :destroy]
+     resources :tags
 
   end
   
@@ -34,6 +35,9 @@ devise_for :admins, controllers:
   resources :tags do
     get 'sekais', to: 'sekais#search'
   end
+  
+    get '/search', to: 'search#search'
+
   
 #   resources :users do
 #         resources :sekais

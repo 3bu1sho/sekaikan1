@@ -1,22 +1,42 @@
-<h2>名</h2>
-<p><%= @sekai.name %></p>
-<h2>タグ</h2>
-<% @sekai_tags.each do |list| %>
-  <span>
-   <%= link_to list.tag_name, tag_sekais_path(list.id) %>
-    </span>
-  <% end %>
-
-
-<h2>画像</h2>
-<%= attachment_image_tag @sekai, :image, :fill, 300, 300, format: 'jpeg' %>
-<h2>概要</h2>
-<p><%= @sekai.introduction %></p>
-
-<table class="sekai_comments">
-  <%= render 'comments/index', sekai: @sekai %>
-</table>
-<%= form_with(model:[@sekai,@comment], local: true) do |f| %>
-  <%= f.text_area :comment, size:"90x5" %>
-  <%= f.submit '送信'%>
-<% end %>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class="col-md-11 offset-md-1 px-5 px-sm-0 mx-auto">
+    <h4>世界の名</h4>
+    <p><%= @sekai.name %></p>
+    
+    <h4>創造主</h4>
+    <p><%= @sekai.user.name %></p><h4>タグ</h4>
+    
+    <% @sekai_tags.each do |list| %>
+      <span>
+       <%= link_to list.tag_name, tag_sekais_path(list.id) %>
+        </span>
+      <% end %>
+    
+    
+    <h4>画像</h4>
+    <%= attachment_image_tag @sekai, :image, format: 'jpeg', size: "600x600" %>
+    <h4>概要</h4>
+    <p><%= @sekai.introduction %></p>
+    
+    <h4>コメント</h4>
+    <table class="sekai_comments">
+      <%= render 'comments/index', sekai: @sekai %>
+    </table>
+    <%= form_with(model:[@sekai,@comment], local: true) do |f| %>
+      <%= f.text_area :comment, size:"90x5" %>
+      <%= f.submit '送信'%>
+    <% end %>
+    
+        <% if current_user.admin? %>
+　　　　<%= link_to "編集", edit_sekai_path(@sekai.id) %>        
+　　　　
+        <% elsif current_user.admin == true %>
+　　　　<%= link_to "編集", edit_sekai_path(@sekai.id) %>        
+        
+        <% elsif current_user == @sekai.user %>
+　　　　<%= link_to "編集", edit_sekai_path(@sekai.id) %>        
+        <% end %>
+    </div>
+  </div>
+</div>
