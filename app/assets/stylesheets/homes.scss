@@ -5,7 +5,7 @@
 .main-visual {
   width: 100%; /* 横幅いっぱい */
   height: 900px; /* 高さ300px */
-  background-image: image-url(topcover.jpg);
+  background-image: image-url("topcover.jpg");
   background-size: cover;
 }
 
