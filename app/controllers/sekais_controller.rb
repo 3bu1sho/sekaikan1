@@ -97,6 +97,10 @@ class SekaisController < ApplicationController
       @sekais =  current_user.sekais
       @tag_list = Tag.all
   end
+  
+  def favindex
+    
+  end
 
   private
   # ストロングパラメータ
