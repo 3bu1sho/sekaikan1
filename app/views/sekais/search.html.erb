@@ -1,25 +1,34 @@
-<h2> 投稿一覧 </h2>
-　
-<div id="要素リスト"> </div>
-  <% @tag_list.each do |list| %>
-  <% if list.sekais.count == 0 %>
-  <% else %>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class="col-md-3 offset-md-1 px-5 px-sm-0 mx-auto">
+        
+    <div id="タグリスト"> </div>
+    <% @tag_list.each do |list| %>
+    <% if list.sekais.count == 0 %>
+    <% else %>
+  
+    <span>
+       <%= (link_to list.tag_name, tag_sekais_path(list.id)) %>
+       <%= ("(#{list.sekais.count})") %>
+    </span>
+    <% end %>                                          
+    <% end %>                          
+    </div>
+    
+    <div class='col-md-8 offset-md-1'>
 
-  <span>
-     <%= (link_to list.tag_name, tag_sekais_path(list.id)) %>
-     <%= ("(#{list.sekais.count})") %>
-  </span>
-  <% end %>
-  <% end %>
-  <br />
-  <div id="要素によって絞り込んだ世界一覧">
+    <h2> 投稿一覧 </h2>
+        <div id="要素によって絞り込んだ世界一覧">
+        </div>
+        <%= "要素が ─ " %>
+        <%= "#{@tag.tag_name}" %>
+        <%= " ─ の世界一覧" %>
+        <br /> 
+        <% @sekais.each do |post| %>
+        <%= (link_to post.name, post) %>
+        <% end %>
+        <br /> 
+        <%= (link_to '俯瞰する', sekais_path) %>
+    </div>
   </div>
-<%= "要素が ─ " %>
-<%= "#{@tag.tag_name}" %>
-<%= " ─ の世界一覧" %>
-    <br /> 
-    <% @sekais.each do |post| %>
-    <%= (link_to post.introduction, post) %>
-    <% end %>
-    <br /> 
-    <%= (link_to '俯瞰する', sekais_path) %>
+</div>
