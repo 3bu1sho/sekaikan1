@@ -99,7 +99,11 @@ class SekaisController < ApplicationController
   end
   
   def favindex
-    
+      @sekais = Sekai.find(Favorite.group(:sekai_id).order('count(user_id) desc').limit(100).pluck(:sekai_id))
+      @sekais_nil = Sekai.includes(:favorites).where( :favorites => { :id => nil } ).limit(100 - @sekais.length)
+      @sekais.push(@sekais_nil)
+      @sekais.flatten!      
+      @tag_list = Tag.all
   end
 
   private

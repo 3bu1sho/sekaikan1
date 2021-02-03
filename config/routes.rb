@@ -19,6 +19,7 @@ devise_for :admins, controllers:
   root 'homes#top'
     get 'top' => 'homes#top'
     get 'sekais/mysekai' => 'sekais#mysekai'
+    get '/sekais/myfav' => 'sekais#favindex'
     post 'sekais' => 'sekais#create'
     patch 'sekais/:id' => 'sekais#update'
   

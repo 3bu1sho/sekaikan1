@@ -10,6 +10,8 @@
         <% if user_signed_in? %>
           <li><%= link_to ' Home', sekais_mysekai_path,class: 'fas fa-home nav-link text-light' %></li>
           <li><%= link_to ' Sekais',sekais_path ,class: 'fas fa-compass nav-link text-light'%></li>
+          <li><%= link_to ' Favorite',sekais_myfav_path ,class: 'fas fa-heart nav-link text-light'%></li>
+          <li><%= link_to ' MySekais',sekais_mysekai_path ,class: 'fas fa-paint-brush nav-link text-light'%></li>
           <li><%= link_to ' logout', destroy_user_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
         <% else %>
           <li><%= link_to ' Home',root_path,class: 'fas fa-home nav-link text-light' %></li>
