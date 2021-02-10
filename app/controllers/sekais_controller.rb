@@ -28,6 +28,7 @@ class SekaisController < ApplicationController
   end
   
   def index
+    @user = current_user
       @sekais =  current_user.sekais
       @sekais = Sekai.find(Favorite.group(:sekai_id).order('count(user_id) desc').limit(100).pluck(:sekai_id))
       if @sekais.length < 100

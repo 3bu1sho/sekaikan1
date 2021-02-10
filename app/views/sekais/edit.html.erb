@@ -1,19 +1,23 @@
-<h1>新規投稿</h1>
-<!-- form_with部分 -->
-  <%= form_with model: @sekai, url:sekai_path(@sekai.id), local:true do |f| %>
-  <h4>画像</h4>
-  <%= f.attachment_field :image %>
-  <h4>世界の名</h4>
-  <%= f.text_field :name %>
-  <h4>概要</h4>
-  <%= f.text_area :introduction %>
-  
-  <br>
-  <%= "半角スペースを入力することで複数の要素を付けることができます。" %>
-  <%= "例：SF スチームパンク ナーロッパ　地動説" %>
-  <%= f.text_field :tag_name %>
-  <br>
-  <%= f.submit '改変' %>
-  
-  <%= link_to "崩壊", sekai_path(@sekai.id), method: :delete, "data-confirm" => "世界が軋む……。崩壊させますか？" %>
-<% end %>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <h1>改変</h1>
+    <!-- form_with部分 -->
+    <%= form_with model: @sekai, url:sekai_path(@sekai.id), local:true do |f| %>
+    <h4>画像</h4>
+    <%= f.attachment_field :image %>
+    <h4>世界の名</h4>
+    <%= f.text_field :name %>
+    <h4>概要</h4>
+    <%= f.text_area :introduction, size: "200x10" %>
+    
+    <br>
+    <%= "半角スペースを入力することで複数の要素を付けることができます。" %>
+    <%= "例：SF スチームパンク ナーロッパ　地動説" %>
+    <%= f.text_field :tag_name %>
+    <br>
+    <%= f.submit '改変' %>
+    
+    <%= link_to "崩壊", sekai_path(@sekai.id), method: :delete, "data-confirm" => "世界が軋む……。崩壊させますか？" %>
+    <% end %>
+  </div>
+</div>

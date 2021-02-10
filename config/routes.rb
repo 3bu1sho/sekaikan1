@@ -30,6 +30,7 @@ devise_for :admins, controllers:
 
   end
   
+  resources :users  
     get 'favorite_rank' => 'sekais#favorite_rank'
     
     
