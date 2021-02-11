@@ -1,0 +1,11 @@
+    <div id="要素リスト"> </div>
+    <% tags.each do |list| %>
+    <% if list.sekais.count == 0 %>
+    <% else %>
+  
+    <span>
+       <%= (link_to list.tag_name, tag_sekais_path(list.id)) %>
+       <%= ("(#{list.sekais.count})") %>
+    </span>
+    <% end %>                                          
+    <% end %>       

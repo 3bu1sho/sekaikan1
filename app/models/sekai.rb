@@ -30,17 +30,8 @@ class Sekai < ApplicationRecord
   end
   
   
-  def self.search_for(content, method)
-    if method == 'perfect'
-      Sekai.where(name: content)
-    elsif method == 'forward'
-      Sekai.where('name LIKE ?', content+'%')
-    elsif method == 'backward'
-      Sekai.where('name LIKE ?', '%'+content)
-    else
-      Sekai.where('name LIKE ?', '%'+content+'%')
-    end
-  end	  
+  def self.search_for(content)
+    Sekai.where('name LIKE ?', '%'+content+'%')
+  end
   
-      
 end

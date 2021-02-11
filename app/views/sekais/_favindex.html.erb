@@ -1,4 +1,5 @@
 <% sekais.each.with_index(1) do |sekai, i| %>
+    <% if sekai.favorited_by?(current_user) %>
 <div>
   <p>
     第
@@ -14,4 +15,6 @@
     <p>画像</p>
   <%= attachment_image_tag sekai, :image, format: 'jpeg', size: "100x100" %>
   </div>
+  <% else %>
   <% end %>
+<% end %>

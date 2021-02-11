@@ -1,0 +1,15 @@
+<table class='table'>
+    <div>
+        <h2>観測者</h2>
+        <tr>
+            <th><%= user.name %></th>
+        </tr>      
+        <tr>
+            <th>    <%= link_to "自己との対話", user_path(user.id) %></th>
+        </tr>    
+    </div>
+</table>
+<table class='table'>
+    <div>
+        <%= link_to "創造を開始する", "/sekais/new" %>
+</table>

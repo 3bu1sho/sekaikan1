@@ -28,7 +28,7 @@ class SekaisController < ApplicationController
   end
   
   def index
-    @user = current_user
+      @user = current_user
       @sekais =  current_user.sekais
       @sekais = Sekai.find(Favorite.group(:sekai_id).order('count(user_id) desc').limit(100).pluck(:sekai_id))
       if @sekais.length < 100
@@ -47,6 +47,7 @@ class SekaisController < ApplicationController
   end
   
   def show
+      @user = current_user
     @sekai = Sekai.find(params[:id])
     @sekai_tags = @sekai.tags  
     @comment = Comment.new
@@ -89,17 +90,20 @@ class SekaisController < ApplicationController
   # end
   
   def search
+      @user = current_user
     @tag_list = Tag.all  #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
     @tag = Tag.find(params[:tag_id])  #クリックしたタグを取得
     @sekais = @tag.sekais.all           #クリックしたタグに紐付けられた投稿を全て表示
   end
   
   def mysekai
+      @user = current_user
       @sekais =  current_user.sekais
       @tag_list = Tag.all
   end
   
   def favindex
+      @user = current_user
       @sekais = Sekai.find(Favorite.group(:sekai_id).order('count(user_id) desc').limit(100).pluck(:sekai_id))
       @sekais_nil = Sekai.includes(:favorites).where( :favorites => { :id => nil } ).limit(100 - @sekais.length)
       @sekais.push(@sekais_nil)

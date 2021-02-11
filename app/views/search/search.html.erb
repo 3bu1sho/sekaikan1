@@ -1,7 +1,14 @@
-<% if @model == 'user' %>
-	<h3>Users search for "<%= @content %>"</h3>
-  <%= render 'users/index', users: @records %>
-<% elsif @model == 'sekai' %>
-	<h3>Sekai search for "<%= @content %>"</h3>
-  <%= render 'sekais/index', sekais: @records %>
-<% end %>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class="col-md-3 offset-md-1 px-5 px-sm-0 mx-auto">
+
+        <% if @model == 'tag' %>
+        	<h3>要素の検索結果 "<%= @content %>"</h3>
+          <%= render 'tags/index', tags: @records %>
+        <% elsif @model == 'sekai' %>
+        	<h3>世界の検索結果 "<%= @content %>"</h3>
+          <%= render 'sekais/index', sekais: @records %>
+        <% end %>
+    </div>
+  </div>
+</div>

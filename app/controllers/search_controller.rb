@@ -5,11 +5,10 @@ class SearchController < ApplicationController
 	def search
 		@model = params[:model]
 		@content = params[:content]
-		@method = params[:method]
 		if @model == 'sekai'
-			@records = Sekai.search_for(@content, @method)
+			@records = Sekai.search_for(@content)
 		elsif  @model == 'tag'
-			@records = Tag.search_for(@content, @method)
+			@records = Tag.search_for(@content)
 		end
 	end
 end

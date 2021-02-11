@@ -1,47 +1,18 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class="col-md-3 offset-md-1 px-5 px-sm-0 mx-auto">
-      
-      <div>
-      <h2>観測者</h2>
-      <tr>
-        <td><%= @user.name %></td>
-      </tr>      
-      </div>        
     
-    <%= link_to "創造を開始する", "/sekais/new" %>
+    <%= render 'userinfo', user: @user%>
 
-    <div id="要素リスト"> </div>
-    <% @tag_list.each do |list| %>
-    <% if list.sekais.count == 0 %>
-    <% else %>
-  
-    <span>
-       <%= (link_to list.tag_name, tag_sekais_path(list.id)) %>
-       <%= ("(#{list.sekais.count})") %>
-    </span>
-    <% end %>                                          
-    <% end %>                          
+    <%= render 'tagindex', tag_list: @tag_list%>
     </div>
     
     <div class='col-md-8 offset-md-1'>
     
     
-    <h1>自分の投稿一覧</h1>
-    <% @sekais.each.with_index(1) do |sekai, i| %>
-    <div>
- 
-    <span>
-    <td class="favorite-btn"><%= render "favorites/favorite-btn", sekai: sekai %></td>
+    <h1>自分の世界一覧</h1>
+      <%= render 'index', sekais: @sekais%>
     
-    </span>
-    </p>
-    タイトル:
-    <%= link_to sekai.name, "/sekais/#{sekai.id}" %>
-    <p>画像</p>
-    <%= attachment_image_tag sekai, :image, format: 'jpeg', size: "100x100" %>
     </div>
-    <% end %>
-        </div>
-    </div>
+  </div>
 </div>

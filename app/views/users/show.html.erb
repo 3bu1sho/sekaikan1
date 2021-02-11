@@ -2,10 +2,17 @@
   <div class='row'>
     <div class="col-md-3 offset-md-1 px-5 px-sm-0 mx-auto">
     
-    <%= link_to "創造を開始する", "/sekais/new" %>
+    <%= render 'sekais/userinfo', user: @user%>
     
+    <%= render 'sekais/tagindex', tag_list: @tag_list%>
+    </div>
     
-
+    <div class='col-md-8 offset-md-1'>
+    <h1>自分の世界一覧</h1>
+    <%= render 'sekais/index', sekais: @sekais%>
+    
+    <h1>自分の気に入った世界一覧</h1>
+    <%= render 'sekais/favindex', sekais: @sekais_fav%>
     </div>
   </div>
 </div>
