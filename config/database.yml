@@ -30,3 +30,9 @@ production:
   host: <%= ENV['DB_HOST'] %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
+  
+#name: "管理者"
+#email: <%= ENV['email'] %>
+#password: <%= ENV['password'] %>
+#password_confirmation: <%= ENV['password_confirmation'] %>
+#admin: "true"

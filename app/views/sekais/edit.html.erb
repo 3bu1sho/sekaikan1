@@ -12,9 +12,15 @@
     
     <br>
     <%= "半角スペースを入力することで複数の要素を付けることができます。" %>
-    <%= "例：SF スチームパンク ナーロッパ　地動説" %>
-    <%= f.text_field :tag_name %>
+    <%= "例：SF スチームパンク ナーロッパ  地動説" %>
+    <%= f.text_field :tag_name, value: @tags %>
     <br>
+    <div>
+      <tr>
+        <th>    <%= "今この世界が持っている要素" %></th>
+        <%= render 'tagindex', tag_list: @tag_list%>
+      </tr>    
+    </div>
     <%= f.submit '改変' %>
     
     <%= link_to "崩壊", sekai_path(@sekai.id), method: :delete, "data-confirm" => "世界が軋む……。崩壊させますか？" %>

@@ -56,7 +56,8 @@ class SekaisController < ApplicationController
   
   def edit
     @sekai = Sekai.find(params[:id])
-    @sekai_tags = @sekai.tags  
+    @tag_list = @sekai.tags  
+
   end
   
   def update

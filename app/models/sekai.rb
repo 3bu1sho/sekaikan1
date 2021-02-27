@@ -13,7 +13,6 @@ class Sekai < ApplicationRecord
 		favorites.where(user_id: user.id).exists?
 	end      
 	
-	
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     old_tags = current_tags - sent_tags
