@@ -23,7 +23,7 @@ class SekaisController < ApplicationController
       # @sekai.save_tag(tag_list)
     redirect_to '/sekais'
     else
-    redirect_to '/sekais'
+    render :new
     end
   end
   
