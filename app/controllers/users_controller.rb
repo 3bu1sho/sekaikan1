@@ -9,5 +9,5 @@ class UsersController < ApplicationController
       @sekais_nil = Sekai.includes(:favorites).where( :favorites => { :id => nil } ).limit(100 - @sekais_fav.length)
       @sekais_fav.push(@sekais_nil)
       @sekais_fav.flatten!      
-      end
+  end
 end
